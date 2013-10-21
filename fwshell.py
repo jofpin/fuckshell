@@ -141,6 +141,7 @@ def validacion():
                 print color.azul + "\t\t##+         #################################             +##" + color.blanco
                 print color.azul + "\t\t#           #  Escaner Detector de WebShell #               #" + color.blanco
                 print color.azul + "\t\t#############################################################\n" + color.blanco
+                print ""
                 print color.verde + "=> Escaneando: Web...\n\033[1;m"
                 pass 
         else:
