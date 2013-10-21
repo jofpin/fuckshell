@@ -66,9 +66,7 @@ else:
     pass
     #Colores
 class color:
-    amarillo = '\033[1;33m'
     azul = '\033[94m'
-    rojo = '\033[91m'
     verde = '\033[92m'
     blanco = '\033[0m'
 def escaneo():
