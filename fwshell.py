@@ -48,100 +48,116 @@
 #
 #
 #
-#############
-import robots
-import urllib2
-import re
+#################
+Autor = "Fraph" #
+Version = "1.0" #
+#################
+import os     #
+import sys    #
+import robots #
+import urllib2#
+import re     #
+###############
+if "linux" in sys.platform:
+    os.system("clear")
+elif "win" in sys.platform:
+    os.system("cls")
+else:
+    pass
+    #Colores
+class color:
+    amarillo = '\033[1;33m'
+    azul = '\033[94m'
+    rojo = '\033[91m'
+    verde = '\033[92m'
+    blanco = '\033[0m'
 def escaneo():
-	global url
-	global coneccion_url 
-	motor=[]  
-	avanze=[] 
-	flowviolento=[] 
-	with open('diccionario.txt') as f:
-		lines = f.readlines()
-		for line in lines:
-			try:
-				coneccion_url=url+line
-				r = urllib2.Request(coneccion_url)
-				r.add_unredirected_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 6.0;en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6')#UserAgent
-				r.add_unredirected_header('Referer', 'http://www.google.com/')#Referer
-				req=urllib2.urlopen(r)
-				resp=req.read()
-				if req.getcode()==200:
-					print '\033[1;32m[+] Posible WebShell Detectada =>\033[1;m ' + coneccion_url,
-					motor.append(coneccion_url+str(len(resp)))
-				else:
-					print '\033[1;32m[+] Redirecciones\033[1;m ' + coneccion_url,
-					flowviolento.append(coneccion_url) 
-			except urllib2.HTTPError as e:
-				if e.code == 401:
-					print '\033[1;32m[+] Posible Sospecha =>\033[1;m ' + coneccion_url,
-					avanze.append(coneccion_url)
-				elif e.code == 404:
-					print '\033[1;31m[-] Shell no Encontrada =>\033[1;m ' + coneccion_url,
-				elif e.code == 503:
-					print '\033[1;31m[-] Servicio no disponible\033[1;m ' + coneccion_url,
-				else:
-					print '\033[1;32m[+] Redirecciones\033[1;m ' + coneccion_url,
-					flowviolento.append(coneccion_url)
-					
-                print "\033[1;33m########################>FWEBSHELL<##########################\033[1;m"
-                print "\033[1;33m#               Developed By: @Fr4phc0r3                    #\033[1;m"
-                print "\033[1;33m##+                        V1.0                           +##\033[1;m"
-                print "\033[1;33m##+         #################################             +##\033[1;m"
-                print "\033[1;33m#           #      Escaneo Finalizado       #               #\033[1;m"
-                print "\033[1;33m#############################################################\033[1;m"                
-		print '' 
-		print ''
-		print  '\033[1;32mResultados: \033[1;m '
-		print '\033[94m==================================================================\033[1;m '
-		if motor:
-			print "\033[1;33mPosibles Archivos Maliciosos\033[1;m"
-			for c0r3 in motor:
-				print c0r3,
-			print '\033[94m================================================================\033[1;m '
-		if avanze:
-			print "\033[1;33mPosibles WebShell Detectadas:\033[1;m"
-			for botella in avanze:
-				print botella,
-			print '\033[94m==================================================================\033[1;m'
-		if flowviolento:
-			print "Estados de otros resultados (robots.txt)"
-			for reconecciones in flowviolento:
-				print reconecciones,
-			print '\033[94m===================================================================\033[1;m'
+        global url
+        global coneccion_url 
+        motor=[]  
+        avanze=[] 
+        flowviolento=[] 
+        with open('diccionario.txt') as f:
+                lines = f.readlines()
+                for line in lines:
+                        try:
+                                coneccion_url=url+line
+                                r = urllib2.Request(coneccion_url)
+                                r.add_unredirected_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 6.0;en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6')#UserAgent
+                                r.add_unredirected_header('Referer', 'http://www.google.com/')#Referer
+                                req=urllib2.urlopen(r)
+                                resp=req.read()
+                                if req.getcode()==200:
+                                        print '\033[1;32m[+] Posible WebShell Detectada =>\033[1;m ' + coneccion_url,
+                                        motor.append(coneccion_url+str(len(resp)))
+                                else:
+                                        print '\033[1;32m[+] Redirecciones\033[1;m ' + coneccion_url,
+                                        flowviolento.append(coneccion_url) 
+                        except urllib2.HTTPError as e:
+                                if e.code == 401:
+                                        print '\033[1;32m[+] Posible Sospecha =>\033[1;m ' + coneccion_url,
+                                        avanze.append(coneccion_url)
+                                elif e.code == 404:
+                                        print '\033[1;31m[-] Shell no Encontrada =>\033[1;m ' + coneccion_url,
+                                elif e.code == 503:
+                                        print '\033[1;31m[-] Servicio no disponible\033[1;m ' + coneccion_url,
+                                else:
+                                        print '\033[1;32m[+] Redirecciones\033[1;m ' + coneccion_url,
+                                        flowviolento.append(coneccion_url)
+                print ''                        
+                print color.azul + "\t\t########################>\033[1;33mFWEBSHELL\033[94m<##########################" + color.blanco
+                print color.azul + "\t\t#               Developed By: @Fr4phc0r3                    #" + color.blanco
+                print color.azul + "\t\t##+                        V1.0                           +##" + color.blanco
+                print color.azul + "\t\t##+         #################################             +##" + color.blanco
+                print color.azul + "\t\t#           #      Escaneo Finalizado       #               #" + color.blanco
+                print color.azul + "\t\t#############################################################\n" + color.blanco               
+                print ''
+                print  '\033[1;32mResultados: \033[1;m '
+                print '\033[94m==================================================================\033[1;m '
+                if motor:
+                        print "\033[1;33mPosibles Archivos Maliciosos\033[1;m"
+                        for c0r3 in motor:
+                                print c0r3,
+                        print '\033[94m================================================================\033[1;m '
+                if avanze:
+                        print "\033[1;33mPosibles WebShell Detectadas:\033[1;m"
+                        for botella in avanze:
+                                print botella,
+                        print '\033[94m==================================================================\033[1;m'
+                if flowviolento:
+                        print "Estados de otros resultados (robots.txt)"
+                        for reconecciones in flowviolento:
+                                print reconecciones,
+                        print '\033[94m===================================================================\033[1;m'
 def validacion():
-	global url
-	url=raw_input("Ingresa La Direccion URL==> ")
-	if url.endswith("/"):
+        global url
+        url=raw_input("Ingresa La Direccion URL==> ")
+        if url.endswith("/"):
                 print ""
-                print "\033[1;33m########################>FWEBSHELL<##########################\033[1;m"
-                print "\033[1;33m#                                                           #\033[1;m"
-                print "\033[1;33m#               Developed By: @Fr4phc0r3                    #\033[1;m"
-                print "\033[1;33m##+                        V1.0                           +##\033[1;m"
-                print "\033[1;33m##+         #################################             +##\033[1;m"
-                print "\033[1;33m#           #  Escaner Detector de WebShell #               #\033[1;m"
-                print "\033[1;33m#           #                               #               #\033[1;m"
-                print "\033[1;33m#############################################################\033[1;m"
-                print ""
-                print "\033[1;32m=> Escaneando: Web...\n\033[1;m"
-		pass 
-	else:
-		url=url+"/"
-	if re.match('((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)',url): #Expresiones Regulares (regexp)
-		pass
-	else:
-		validacion()
-		
+                print color.azul + "\t\t########################>FWEBSHELL<##########################" + color.blanco
+                print color.azul + "\t\t#                                                           #" + color.blanco
+                print color.azul + "\t\t#               Developed By: @Fr4phc0r3                    #" + color.blanco
+                print color.azul + "\t\t##+                        V1.0                           +##" + color.blanco
+                print color.azul + "\t\t##+         #################################             +##" + color.blanco
+                print color.azul + "\t\t#           #  Escaner Detector de WebShell #               #" + color.blanco
+                print color.azul + "\t\t#############################################################\n" + color.blanco
+                print color.verde + "=> Escaneando: Web...\n\033[1;m"
+                pass 
+        else:
+                url=url+"/"
+        if re.match('((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)',url): #Expresiones Regulares (regexp)
+                pass
+        else:
+                validacion()
+                
 if __name__ == '__main__':
-	try:
-		validacion()
-		escaneo()
-		robots.robots(url)
-	except KeyboardInterrupt:
-		pass
-	except Exception as e:
-		print "Un Fallo en la Tool: %s" % e #Invalidez
+        try:
+                validacion()
+                escaneo()
+                robots.robots(url)
+        except KeyboardInterrupt:
+                pass
+        except Exception as e:
+                print "Un Fallo en la Tool: %s" % e #Invalidez
 
 
