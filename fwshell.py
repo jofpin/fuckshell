@@ -136,7 +136,8 @@ def validacion():
                 print color.azul + "\t\t#                                                           #" + color.blanco
                 print color.azul + "\t\t#               Developed By: @Fr4phc0r3                    #" + color.blanco
                 print color.azul + "\t\t##+                        V1.0                           +##" + color.blanco
-                print color.azul + "\t\t##+         #################################             +##" + color.blanco
+                print color.azul + "\t\t##+            Cwhp Lab`s  www.ccat.edu.mx                +##" + color.blanco
+                print color.azul + "\t\t#           #################################               #" + color.blanco
                 print color.azul + "\t\t#           #  Escaner Detector de WebShell #               #" + color.blanco
                 print color.azul + "\t\t#############################################################" + color.blanco
                 print ""
