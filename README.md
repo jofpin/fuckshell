@@ -1,4 +1,4 @@
-Fwshell
+Fuckshell
 =======
 
-Webshell Scanner V1.0
+Webshell Scanner (Pythonada)
