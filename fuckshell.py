@@ -80,7 +80,7 @@ def validate():
         global url
         print ""
         print "\t\t-------------" + color['blue'] + "Fuckshell" + color['white'] + "------------"
-        print "\t\tx    Developed by: @mrjopino     x"
+        print "\t\tx      Developed by: @jofpin     x"
         print "\t\tx           happy hacker         x"
         print "\t\t----------------------------------\n\n"
         print ""
