@@ -1,4 +1,4 @@
 Fuckshell
 =======
 
-Webshell Scanner (Pythonada)
+Simple Webshell Scanner. Using, defined files with dictionary!
